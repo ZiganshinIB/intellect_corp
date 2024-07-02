@@ -1,0 +1,10 @@
+[Unit]
+After=redis.service
+
+[Service]
+WorkingDirectory=/opt/intellect_corp/i_corp/
+ExecStart=/opt/intellect_corp/i_corp/.venv/bin/python manage.py runserver
+Restart=Always
+
+[Install]
+WantedBy=multi-user.target
