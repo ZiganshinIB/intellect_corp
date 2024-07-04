@@ -2,6 +2,7 @@
 services:
   mysite:
     build: icorp/
+    env_file: .env
     volumes:
       - ./icorp/:/opt/project
     ports:
