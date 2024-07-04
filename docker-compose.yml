@@ -8,8 +8,7 @@ services:
       - 80:80
     depends_on:
       - db_redis
-    command:
-      - python manage.py migrate && python manage.py runserver 0.0.0.0:80
+    command: python manage.py runserver 0.0.0.0:80
     container_name: back_icorp
   db_redis:
     image: redis
