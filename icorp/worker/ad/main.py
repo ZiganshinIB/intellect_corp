@@ -2,9 +2,8 @@ from ldap3 import Server, Connection, ALL, NTLM
 # from django.conf import settings
 from icorp.icorp import settings
 def main():
-    print("Hello World")
+    server = Server(env.str("AD_HOST"), get_info=ALL)
 
-    server = Server('fs.kzp.in', get_info=ALL)
     conn = Connection(server,
                       user=env.str("AD_ADMIN_NAME"),
                       password=env.str("AD_ADMIN_PASSWORD"),
