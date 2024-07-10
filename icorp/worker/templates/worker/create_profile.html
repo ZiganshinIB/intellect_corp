@@ -1,0 +1,13 @@
+{% extends "forms/center.html" %}
+{% block title %}Создание профиля{% endblock %}
+{% block form %}
+    <h1>Создание профиля</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-info btn-full-width" value="Создать профиль">
+            <i class="bi bi-plus"></i>
+            Создать профиль
+        </button>
+    </form>
+{% endblock %}

@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
+    <link rel="stylesheet" id="bs-base-fonts">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets/fonts/bootstrap/bootstrap-icons.css' %}"/>
+    <link rel="stylesheet" href="{% static 'assets/css/main.min.css' %}" />
+
+
+    <!-- Scrollbar CSS -->
+	<link rel="stylesheet" href="{% static 'assets/vendor/overlay-scroll/OverlayScrollbars.min.css' %}" />
+    <!-- Optional: include this if you want to use the theme without the default assets/vendor/overlay-scroll/OverlayScrollbars.min.css" /> -->
+    <!-- Toastify CSS -->
+	<link rel="stylesheet" href="{% static 'assets/vendor/toastify/toastify.css' %}" />
+
+    {% block link %}{% endblock %}
+</head>
+<body>
+    <!-- Page wrapper start -->
+		<div class="page-wrapper">
+
+			<!-- App header starts -->
+			<div class="app-header d-flex align-items-center">
+				<!-- Toggle buttons start -->
+				{% include 'navbar/toggle_button.html' %}
+				<!-- Toggle buttons end -->
+				<!-- App brand starts -->
+				{% include 'navbar/brand.html' %}
+				<!-- App brand ends -->
+				<div class="header-actions col">
+                    <!-- Account -->
+                    {% include 'navbar/account_dropdown.html' %}
+                    <!-- Account -->
+				</div>
+
+			</div>
+			<!-- App header ends -->
+
+			<!-- Main container start -->
+			<div class="main-container">
+				<!-- Sidebar wrapper start -->
+                {% include 'navbar/sidebar_menu.html' %}
+				<!-- Sidebar wrapper end -->
+
+				<!-- App container starts -->
+				{% block content %}
+				{% endblock %}
+				<!-- App container ends -->
+			</div>
+			<!-- Main container end -->
+		</div>
+		<!-- Page wrapper end -->
+
+		<!-- *************
+			************ JavaScript Files *************
+		************* -->
+		<!-- Required jQuery first, then Bootstrap Bundle JS -->
+		<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+		<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+		<script src="{% static 'assets/js/moment.min.js' %}"></script>
+
+		<!-- *************
+			************ Vendor Js Files *************
+		************* -->
+
+		<!-- Overlay Scroll JS -->
+		<script src="{% static 'assets/vendor/overlay-scroll/jquery.overlayScrollbars.min.js' %}"></script>
+		<script src="{% static 'assets/vendor/overlay-scroll/custom-scrollbar.js' %}"></script>
+
+		<!-- Toastify JS -->
+		<script src="{% static 'assets/vendor/toastify/toastify.js' %}"></script>
+		<script src="{% static 'assets/vendor/toastify/custom.js' %}"></script>
+
+		<!-- Apex Charts -->
+		<script src="{% static 'assets/vendor/apex/apexcharts.min.js' %}"></script>
+		<script src="{% static 'assets/vendor/apex/custom/dash1/visitors.js' %}"></script>
+		<script src="{% static 'assets/vendor/apex/custom/dash1/sales.js' %}"></script>
+		<script src="{% static 'assets/vendor/apex/custom/dash1/sparkline.js' %}"></script>
+		<script src="{% static 'assets/vendor/apex/custom/dash1/tasks.js' %}"></script>
+		<script src="{% static 'assets/vendor/apex/custom/dash1/income.js' %}"></script>
+
+		<!-- Custom JS files -->
+		<script src="{% static 'assets/js/custom.js' %}"></script>
+</body>
+</html>

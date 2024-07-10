@@ -1,0 +1,19 @@
+{% load static %}
+<div class="dropdown ms-2">
+    <a id="userSettings" class="dropdown-toggle d-flex py-2 align-items-center text-decoration-none" href="#!"
+       role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="{% static 'assets/images/user.png' %}" class="rounded-2 img-3x"/>
+        <span class="ms-2 text-truncate d-lg-block d-none">Anne Santiago</span>
+    </a>
+    <!-- TODO dropdown menu -->
+    <div class="dropdown-menu dropdown-menu-end shadow-lg">
+        <div class="header-action-links mx-3 gap-2">
+            <a class="dropdown-item" href="profile.html"><i class="bi bi-person text-primary"></i>Profile</a>
+            <a class="dropdown-item" href="settings.html"><i class="bi bi-gear text-danger"></i>Settings</a>
+            <a class="dropdown-item" href="widgets.html"><i class="bi bi-box text-success"></i>Widgets</a>
+        </div>
+        <div class="mx-3 mt-2 d-grid">
+            <a href="login.html" class="btn btn-primary btn-sm">Logout</a>
+        </div>
+    </div>
+</div>
