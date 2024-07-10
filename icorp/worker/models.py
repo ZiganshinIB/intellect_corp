@@ -98,6 +98,7 @@ class Position(models.Model):
                                    on_delete=models.CASCADE,
                                    related_name="positions",
                                    verbose_name="Отдел")
+    path_ou = models.CharField(max_length=512, verbose_name="OU", blank=True, null=True)
     permissions = models.ManyToManyField("AccessGroup",
                                          blank=True,
                                          verbose_name="Разрешения")
