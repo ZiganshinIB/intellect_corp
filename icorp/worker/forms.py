@@ -38,11 +38,12 @@ class ProfileForm(forms.ModelForm):
     )
 
     birthday = forms.DateField(
-        label=False,
+        label='Дата рождения',
         required=True,
         error_messages={'required': 'Укажите дату рождения'},
         widget=forms.DateInput(
             attrs={
+                'type': 'date',
                 'placeholder': 'Дата рождения',
                 'class': 'form-control',
             })
@@ -60,11 +61,12 @@ class ProfileForm(forms.ModelForm):
     )
 
     data_start_work = forms.DateField(
-        label=False,
+        label='Дата начала работы',
         required=True,
         error_messages={'required': 'Укажите дату начала работы'},
         widget=forms.DateInput(
             attrs={
+                'type': 'date',
                 'placeholder': 'Дата начала работы',
                 'class': 'form-control',
             })
