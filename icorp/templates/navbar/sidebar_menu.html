@@ -4,7 +4,7 @@
     <div class="sidebarMenuScroll">
         <ul class="sidebar-menu">
             <li {% if section == 'dashboard' %} class="active current-page" {% endif %}>
-                <a href="index.html">
+                <a href="{% url 'index' %}">
                     <i class="bi bi-pie-chart"></i>
                     <span class="menu-text">Dashboard</span>
                 </a>
