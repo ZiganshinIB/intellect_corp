@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'worker.apps.WorkerConfig',
+    'tasker.apps.TaskerConfig',
     'debug_toolbar',
 ]
 

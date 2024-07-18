@@ -1,6 +1,7 @@
 from django import forms
+from django.utils import timezone
 from phonenumber_field.formfields import PhoneNumberField
-from .models import Profile
+from .models import Profile, Department
 
 
 class ProfileForm(forms.ModelForm):
@@ -35,6 +36,13 @@ class ProfileForm(forms.ModelForm):
                 'placeholder': 'Отчество',
                 'class': 'form-control',
             })
+    )
+
+    department = forms.ModelChoiceField(
+        label='Отдел',
+        queryset=Department.objects.all(),
+        required=True,
+        error_messages={'required': 'Укажите отдел'}
     )
 
     birthday = forms.DateField(
@@ -74,4 +82,22 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ['first_name', 'last_name', 'surname']
+        fields = ['first_name', 'last_name',
+                  'surname',
+                  'department', 'position',
+                  'birthday', 'telephone', 'data_start_work', ]
+
+    def clean_birthday(self):
+        super().clean()
+        birthday = self.cleaned_data['birthday']
+        if birthday > timezone.now():
+            raise forms.ValidationError('Дата рождения не может быть больше текущей')
+        return birthday
+
+    def clean_data_start_work(self):
+        super().clean()
+        data_start_work = self.cleaned_data['data_start_work']
+        if data_start_work > timezone.now():
+            raise forms.ValidationError('Дата начала работы не может быть больше текущей')
+        return data_start_work
+

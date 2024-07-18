@@ -1,24 +1,18 @@
 from django.db import models
 
 
-class TaskStatus(models.Model):
-    """ Статус """
-    name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = 'Статус'
-        verbose_name_plural = 'Статусы'
-
-
 # Задачи
 class Task(models.Model):
+    STATUS = (
+        ('new', 'Новая'),
+        ('prc', 'В процессе'),
+        ('fin', 'Завершена'),
+        ('can', 'Отменена'),
+    )
     """ Задача """
     name = models.CharField(max_length=100)
     description = models.TextField()
-    status = models.ForeignKey('TaskStatus', on_delete=models.CASCADE)
+    status = models.CharField(max_length=3, choices=STATUS)
     created_by = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     assigned_to = models.ForeignKey('auth.User', on_delete=models.CASCADE,
                                     related_name='assigned_tasks',
