@@ -42,7 +42,10 @@ class ProfileForm(forms.ModelForm):
         label='Отдел',
         queryset=Department.objects.all(),
         required=True,
-        error_messages={'required': 'Укажите отдел'}
+        error_messages={'required': 'Укажите отдел'},
+        widget=forms.Select(
+            attrs={'class': 'form-select'}
+        )
     )
 
     birthday = forms.DateField(
@@ -86,6 +89,10 @@ class ProfileForm(forms.ModelForm):
                   'surname',
                   'department', 'position',
                   'birthday', 'telephone', 'data_start_work', ]
+
+        widgets = {
+            'position': forms.Select(attrs={'class': 'form-select'}),
+        }
 
     def clean_birthday(self):
         super().clean()
