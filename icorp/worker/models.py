@@ -128,6 +128,7 @@ class Profile(models.Model):
                               verbose_name="Фото",
                               default="media/profile_default.jpg",
                               )
+    birthday = models.DateField(verbose_name="Дата рождения", blank=True, null=True)
     phone = modelfields.PhoneNumberField(blank=True, null=True,
                                          verbose_name="Телефон")
     internal_phone = models.CharField(max_length=3,
@@ -155,7 +156,7 @@ class Profile(models.Model):
     status = models.CharField(max_length=3, choices=STATUS, default='crt', verbose_name="Статус")
 
     def full_name(self):
-        return self.user.first_name + " " + self.user.last_name  + f" {self.patronymic}" if self.patronymic else ""
+        return self.user.first_name + " " + self.user.last_name  + (f" {self.patronymic}" if self.patronymic else "")
 
     def delete(self, *args, **kwargs):
         self.photo.delete()
@@ -177,13 +178,6 @@ class Profile(models.Model):
     class Meta:
         verbose_name = "Профиль"
         verbose_name_plural = "Профили"
-
-
-# При создании пользователя создаем профиль
-@receiver(post_save, sender=UserModel)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        Profile.objects.create(user=instance)
 
 
 # При изменении поля группы доступа обновляем их профилей

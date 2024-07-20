@@ -25,7 +25,7 @@ def create_task_add_profile(request):
             user_name = transliterate.translit(
                 f"{first_name}.{last_name}",
                 'ru',
-                reversed=True)
+                reversed=True).replace("'", "").replace("`", "")
             count = User.objects.filter(Q(username__startswith=user_name)).count()
             if count > 0:
                 user_name = f"{user_name}{count}"
@@ -39,9 +39,10 @@ def create_task_add_profile(request):
             new_user.save()
             profile = Profile.objects.create(
                 user=new_user,
+                patronymic=form.cleaned_data['surname'] if form.cleaned_data['surname'] else None,  # patronymic
                 position=form.cleaned_data['position'],
                 birthday=form.cleaned_data['birthday'],
-                telephone=form.cleaned_data['telephone'],
+                phone=form.cleaned_data['telephone'],
                 data_start_work=form.cleaned_data['data_start_work'],
                 photo=form.cleaned_data['photo'],
                 status='crt'
