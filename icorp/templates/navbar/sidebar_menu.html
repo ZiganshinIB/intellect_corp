@@ -4,15 +4,22 @@
     <div class="sidebarMenuScroll">
         <ul class="sidebar-menu">
             <li {% if section == 'dashboard' %} class="active current-page" {% endif %}>
-                <a href="{% url 'index' %}">
+                <a href="{% url 'dashboard' %}">
                     <i class="bi bi-pie-chart"></i>
                     <span class="menu-text">Dashboard</span>
                 </a>
             </li>
-            <li {% if section == 'create_profile' %} class="active current-page" {% endif %}>
-                <a href="{% url 'create_profile' %}">
+            <!-- Форма для запольнения заявки на создания сотрдника должен быть виден только HR-creater -->
+            <li {% if section == 'task_add_profile' %} class="active current-page" {% endif %}>
+                <a href="{% url 'task_add_profile' %}">
                     <i class="bi bi-person-plus"></i>
                     <span class="menu-text">Добавить сотрудника</span>
+                </a>
+            </li>
+            <li {% if section == 'crate_profile' %} class="active current-page" {% endif %}>
+                <a href="{% url 'tasker:create_profile_list' %}">
+                    <i class="fs-3 bi bi-person-rolodex"></i>
+                    <span class="menu-text">Создать профили</span>
                 </a>
             </li>
 <!--            <li>-->

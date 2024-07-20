@@ -13,8 +13,8 @@ class Task(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
     status = models.CharField(max_length=3, choices=STATUS)
-    created_by = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-    assigned_to = models.ForeignKey('auth.User', on_delete=models.CASCADE,
+    created_by = models.ForeignKey('auth.User', on_delete=models.SET_NULL, null=True, blank=True)
+    assigned_to = models.ForeignKey('auth.User', on_delete=models.SET_NULL,
                                     related_name='assigned_tasks',
                                     null=True,
                                     blank=True)

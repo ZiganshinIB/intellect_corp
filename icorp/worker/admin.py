@@ -18,8 +18,6 @@ class PositionAdmin(admin.ModelAdmin):
     list_display = ['name', 'department',]
 
 
-
-
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ['user', 'position', 'position_department', 'chief']

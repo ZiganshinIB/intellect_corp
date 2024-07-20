@@ -112,6 +112,11 @@ class Position(models.Model):
 
 
 class Profile(models.Model):
+    STATUS = (
+        ('crt', 'Запрошен'),
+        ('act', 'Активен'),
+        ('blk', 'Блокирован'),
+    )
     user = models.OneToOneField(UserModel,
                                 on_delete=models.CASCADE,
                                 related_name="profile",
@@ -135,12 +140,16 @@ class Profile(models.Model):
                                          blank=True,
                                          related_name="permissions",
                                          verbose_name="Разрешения")
+    data_start_work = models.DateField(blank=True,
+                                       null=True,
+                                       verbose_name="Дата начала работы")
     chief = models.ForeignKey(UserModel,
                               on_delete=models.SET_NULL,
                               blank=True,
                               null=True,
                               related_name="profiles",
                               verbose_name="Руководитель")
+    status = models.CharField(max_length=3, choices=STATUS, default='crt', verbose_name="Статус")
 
     def delete(self, *args, **kwargs):
         self.photo.delete()

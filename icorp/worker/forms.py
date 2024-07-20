@@ -88,7 +88,8 @@ class ProfileForm(forms.ModelForm):
         fields = ['first_name', 'last_name',
                   'surname',
                   'department', 'position',
-                  'birthday', 'telephone', 'data_start_work', ]
+                  'birthday', 'telephone', 'data_start_work',
+                  'photo']
 
         widgets = {
             'position': forms.Select(attrs={'class': 'form-select'}),
