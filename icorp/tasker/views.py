@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 from worker.models import Profile
 
+
 def create_profile_list(request):
     profiles = Profile.objects.all()
     context = {'profiles': profiles,
