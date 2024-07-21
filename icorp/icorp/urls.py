@@ -10,6 +10,7 @@ urlpatterns = [
     path("__debug__/", include("debug_toolbar.urls")),
     path("", include("worker.urls")),
     path('tasker/', include("tasker.urls", namespace="tasker")),
+    path('account/', include("account.urls", namespace="account")),
 ]
 
 if settings.DEBUG:

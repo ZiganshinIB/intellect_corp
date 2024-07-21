@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>{% block title %}{% endblock %}</title>
+
+  <!-- ************ CSS Files ************* -->
+  <link rel="stylesheet" href="{% static  'assets/fonts/bootstrap/bootstrap-icons.css' %}"/>
+  <link rel="stylesheet" href="{% static  'assets/css/main.min.css' %}"/>
+  {% block css %}{% endblock %}
+
+</head>
+
+<body class="bg-white">
+<!-- Container start -->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-xl-4 col-lg-5 col-sm-6 col-12">
+      {% block form %}
+      <form action="#" class="my-5">
+        <div class="border rounded-2 p-4 mt-5">
+          <div class="login-form">
+            {% block logo %}
+            <a href="index.html" class="mb-4 d-flex">
+              <img src="{% static  'assets/images/logo.svg' %}" class="img-fluid login-logo" alt="Earth Admin Dashboard"/>
+            </a>
+            {% endblock %}
+            <h5 class="fw-light mb-5">{% block form_title %}Вход{% endblock %}</h5>
+            {% block form_fields %}
+            <div class="mb-3">
+              <label class="form-label">Your Email</label>
+              <input type="text" class="form-control" placeholder="Enter your email"/>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Your Password</label>
+              <input type="password" class="form-control" placeholder="Enter password"/>
+            </div>
+            {% endblock %}
+            {% block submit_buttons %}
+            <div class="d-grid py-3 mt-4">
+              <button type="submit" class="btn btn-lg btn-primary">
+                Вход
+              </button>
+            </div>
+            {% endblock %}
+            {% block form_links %}
+            <div class="text-center pt-4">
+              <span>Забыли пароль?</span>
+              <a href="#" class="text-blue text-decoration-underline ms-2">
+                Востановить пароль</a>
+            </div>
+            {% endblock %}
+          </div>
+        </div>
+      </form>
+      {% endblock %}
+    </div>
+  </div>
+</div>
+<!-- Container end -->
+</body>
+
+</html>
