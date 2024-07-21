@@ -10,3 +10,15 @@ def create_profile_list(request):
         request,
         template_name='tasker/create_profile_list.html',
         context=context)
+
+
+def create_profile_detail(request, pk):
+    profile = Profile.objects.get(id=pk)
+    context = {
+        'profile': profile,
+        'section': 'create_profile_detail'
+    }
+    return render(
+        request,
+        template_name='tasker/create_profile_detail.html',
+        context=context)

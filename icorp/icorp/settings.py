@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'worker.apps.WorkerConfig',
     'tasker.apps.TaskerConfig',
     #'debug_toolbar',
+    'easy_thumbnails',
 ]
 
 MIDDLEWARE = [

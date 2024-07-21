@@ -1,5 +1,6 @@
 django==4.2.9
 django-debug-toolbar==4.4.2
+easy_thumbnails==2.8.5
 pillow~=10.4
 django-phonenumber-field
 django-phonenumber-field[phonenumberslite]

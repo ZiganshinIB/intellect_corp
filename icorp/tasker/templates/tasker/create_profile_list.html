@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load thumbnail %}
 {% load static %}
-{% block title %}Создание профиля{% endblock %}
+{% block title %}Список  профилей для создание{% endblock %}
 
 {% block content %}
 <!-- App body starts -->
@@ -24,11 +25,13 @@
               </thead>
               <tbody>
               {% for profile in profiles %}
-              <tr>
+
+                <tr onclick="location.href='{% url 'tasker:create_profile_detail' profile.id %}';" style="cursor: pointer;">
+
                 <!-- Фото -->
                 <th scope="row">
                   {% if profile.photo %}
-                  <img class="rounded-circle img-3x me-2" src="{{ profile.photo.url }}" alt="Bootstrap Gallery">
+                  <img class="rounded-circle img-3x me-2" src="{% thumbnail profile.photo 180x180 %}" alt="Bootstrap Gallery">
                   {% else %}
                   <img class="rounded-circle img-3x me-2" src="assets/images/user.png" alt="Bootstrap Gallery">
                   {% endif %}
@@ -48,6 +51,7 @@
                   </a>
                 </td>
               </tr>
+
               {% endfor %}
               </tbody>
             </table>
