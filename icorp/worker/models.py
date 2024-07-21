@@ -99,9 +99,10 @@ class Position(models.Model):
                                    related_name="positions",
                                    verbose_name="Отдел")
     path_ou = models.CharField(max_length=512, verbose_name="OU", blank=True, null=True)
-    permissions = models.ManyToManyField("AccessGroup",
+    access = models.ManyToManyField("AccessGroup",
                                          blank=True,
-                                         verbose_name="Разрешения")
+                                         verbose_name="Разрешения",
+                                    related_name="positions")
 
     class Meta:
         verbose_name = "Должность"
@@ -109,6 +110,20 @@ class Position(models.Model):
 
     def __str__(self):
         return "{} - {}".format(self.name, self.department)
+
+
+class ProfileAccess(models.Model):
+    access_from = models.ForeignKey(
+        'AccessGroup',
+        related_name="rel_from_set",
+        on_delete=models.CASCADE,
+
+    )
+    profile_to = models.ForeignKey(
+        "Profile",
+        related_name="rel_to_set",
+        on_delete=models.CASCADE
+    )
 
 
 class Profile(models.Model):
@@ -140,10 +155,11 @@ class Profile(models.Model):
                                  blank=True,
                                  null=True,
                                  verbose_name="Должность")
-    permissions = models.ManyToManyField("AccessGroup",
-                                         blank=True,
-                                         related_name="permissions",
-                                         verbose_name="Разрешения")
+    access = models.ManyToManyField("AccessGroup",
+                                    through=ProfileAccess,
+                                    blank=True,
+                                    related_name="profiles",
+                                    verbose_name="Разрешения")
     data_start_work = models.DateField(blank=True,
                                        null=True,
                                        verbose_name="Дата начала работы")
@@ -188,4 +204,6 @@ def update_position(sender, instance, created, **kwargs):
         for permission in instance.permissions.all():
             if permission not in profile.permissions.all():
                 profile.permissions.add(permission)
+
+
 

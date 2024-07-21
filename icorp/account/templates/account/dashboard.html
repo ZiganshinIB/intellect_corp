@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% load static %}
+{% block title %}Профиль{% endblock %}
+{% block content %}
+  <div class="app-body">
+
+    <!-- Row start -->
+    <div class="row justify-content-center">
+      <div class="col-xxl-12">
+        <div class="card mb-3">
+          <div class="card-body">
+            <!-- Строка сверху -->
+            <div class="row align-items-center">
+                <!-- Фото -->
+              <div class="col-auto">
+                <img src="{% thumbnail profile.photo 180x180 %}" class="img-5xx rounded-circle" alt="Bootstrap Gallery">
+              </div>
+                <!-- Должность и отдель -->
+              <div class="col">
+                  {% if profile.position %}
+                <h6 class="text-primary">{{ profile.position }}</h6>
+                <h4 class="m-0">{{ profile.position.department }}</h4>
+                  {% endif %}
+              </div>
+                <!-- Кнопка редактирования пароля -->
+              <div class="col-12 col-md-auto">
+                <a href="#" class="btn btn-outline-primary btn-lg">
+                    Смениить пароль
+                </a>
+              </div>
+
+            </div>
+            <!-- Row end -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Row end -->
+
+    <!-- Row start -->
+    <div class="row gx-3">
+      <div class="col-xxl-6 col-sm-6 col-12 order-xxl-6 order-xl-6 order-lg-6 order-md-6 order-sm-6">
+        <!-- О сотруднике -->
+        <div class="card mb-3">
+
+          <div class="card-header">
+            <h5 class="card-title">Обо мне</h5>
+          </div>
+
+          <div class="card-body">
+            <!-- Компнаия -->
+            <h6 class="d-flex align-items-center mb-3">
+              <i class="bi bi-building fs-2 me-2"></i> Копмания:
+              <span>{{ profile.position.department.company }} </span>
+            </h6>
+            <!-- Номер телефона -->
+            <h6 class="d-flex align-items-center mb-3">
+              <i class="bi bi-phone fs-2 me-2"></i> Телефон:
+              <span class="text-primary">{{ profile.phone }}</span>
+            </h6>
+            <!-- Внутрений номер -->
+            <h6 class="d-flex align-items-center mb-3">
+              <i class="bi bi-phone fs-2 me-2"></i> Телефон:
+              <span class="text-primary">{{ profile.internal_phone }}</span>
+            </h6>
+            <!-- Почта -->
+            <h6 class="d-flex align-items-center mb-3">
+              <i class="bi bi-envelope fs-2 me-2"></i>
+              <span class="text-primary">{{ profile.user.email }}</span>
+            </h6>
+            <!-- Дата трудоустройства -->
+            <h6 class="d-flex align-items-center mb3">
+              <i class="bi bi-calendar4-event fs-2 me-2"></i>
+              <span class="text-primary">
+                {{ profile.data_start_work }}
+              </span>
+            </h6>
+          </div>
+        </div>
+
+        <!-- Навыки -->
+        <div class="card mb-3">
+          <div class="card-header">
+            <h5 class="card-title">Skills</h5>
+          </div>
+          <div class="card-body">
+            <div class="d-inline-flex gap-2 flex-wrap">
+              <span class="badge bg-danger">HTML</span>
+              <span class="badge bg-info">Javascript</span>
+              <span class="badge bg-success">React</span>
+              <span class="badge bg-warning">Scss</span>
+              <span class="badge bg-primary">Angular</span>
+              <span class="badge bg-secondary">CSS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xxl-6 col-sm-6 col-12 order-xxl-6 order-xl-6 order-lg-6 order-md-6 order-sm-6">
+        <!-- Группы доступа -->
+        <div class="card mb-3">
+          <div class="card-header">
+            <h5 class="card-title">Группы доступа</h5>
+          </div>
+          <!-- Необходимо добавить тут карточки групп доступа -->
+          <div class="card-body">
+            <ul class="list-group">
+              {% for access in profile.access.all %}
+              <li class="list-group-item">
+                  <i class="bi bi-people"></i> Bootstrap 5
+                  Admin Dashboard
+              </li>
+              {% endfor %}
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Row end -->
+
+  </div>
+{% endblock %}
