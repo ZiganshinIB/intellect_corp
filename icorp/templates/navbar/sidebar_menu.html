@@ -10,10 +10,10 @@
                 </a>
             </li>
             <!-- Форма для запольнения заявки на создания сотрдника должен быть виден только HR-creater -->
-            <li {% if section == 'task_add_profile' %} class="active current-page" {% endif %}>
-                <a href="{% url 'task_add_profile' %}">
+            <li {% if section == 'profiles' %} class="active current-page" {% endif %}>
+                <a href="{% url 'profiles' %}">
                     <i class="bi bi-person-plus"></i>
-                    <span class="menu-text">Добавить сотрудника</span>
+                    <span class="menu-text">Сотрудники</span>
                 </a>
             </li>
             <li {% if section == 'crate_profile' %} class="active current-page" {% endif %}>

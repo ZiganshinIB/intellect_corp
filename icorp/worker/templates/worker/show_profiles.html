@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% load static %}
+{% block title %}Сотрудники{% endblock %}
+
+{% block content %}
+<!-- App body starts -->
+<div class="app-body">
+  <div class="col-12 mb-3">
+    <div class="text-end">
+      <a href="{% url 'task_add_profile' %}" class="btn btn-primary ms-1">Создать запись</a>
+    </div>
+  </div>
+  <!-- Row start -->
+  <div class="row gx-3">
+    <div class="col-xxl-12">
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table align-middle table-hover m-0">
+              <thead>
+              <tr>
+                <th scope="col">Сотрудниник</th>
+                <th scope="col">ФИО</th>
+                <th scope="col">Отдел</th>
+                <th scope="col">Должность</th>
+                <th scope="col">Дата начала</th>
+                <th scope="col">Действия</th>
+              </tr>
+              </thead>
+              <tbody>
+              {% for profile in profiles %}
+
+                <tr style="cursor: pointer;">
+
+                <!-- Фото -->
+                <th scope="row">
+                  {% if profile.photo %}
+                  <img class="rounded-circle img-3x me-2" src="{% thumbnail profile.photo 180x180 %}" alt="Bootstrap Gallery">
+                  {% else %}
+                  <img class="rounded-circle img-3x me-2" src="assets/images/user.png" alt="Bootstrap Gallery">
+                  {% endif %}
+                </th>
+                <!-- ФИО -->
+                <td>{{ profile.full_name  }}</td>
+                <!-- Отдел -->
+                <td>{{ profile.position.department.name }}</td>
+                <!-- Должность -->
+                <td>{{ profile.position.name }}</td>
+                <!-- Дата начала работы -->
+                <td>{{ profile.position.data_start_work|date:"d.m.Y" }}</td>
+                <td>
+                  <a class="btn btn-info btn-sm " href="#"><i class="bi bi-pencil"></i>
+                  </a>
+                </td>
+              </tr>
+
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+	</div>
+	<!-- Main container ends -->
+</div>
+<!-- Page wrapper ends -->
+{% endblock %}

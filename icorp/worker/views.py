@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, DetailView, CreateView
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Q
 import transliterate
@@ -59,4 +60,16 @@ def create_task_add_profile(request):
     else:
         form = ProfileForm()
     return render(request, 'worker/create_profile.html', {'form': form, 'section': 'task_add_profile'})
+
+
+@login_required
+def show_profiles(request):
+    profiles = Profile.objects.filter(user__is_active=True)
+    return render(
+        request,
+        template_name='worker/show_profiles.html',
+        context={
+            'profiles': profiles,
+            'section': 'profiles'}
+        )
 

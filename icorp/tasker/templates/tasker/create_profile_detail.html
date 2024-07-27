@@ -1,99 +1,11 @@
-{% extends 'base.html' %}
+{% extends 'profile/base.html' %}
 {% load thumbnail %}
 {% load static %}
-{% block title %}Список  профилей для создание{% endblock %}
-{% block content %}
-  <div class="app-body">
-
-    <!-- Row start -->
-    <div class="row justify-content-center">
-      <div class="col-xxl-12">
-        <div class="card mb-3">
-          <div class="card-body">
-            <!-- Row start -->
-            <div class="row align-items-center">
-              <div class="col-auto">
-                <img src="assets/images/user.png" class="img-5xx rounded-circle" alt="Bootstrap Gallery">
-              </div>
-              <div class="col">
-                <h6 class="text-primary">UX Designer</h6>
-                <h4 class="m-0">Priscilla Hawkins</h4>
-              </div>
-              <div class="col-12 col-md-auto">
-                <a href="#!" class="btn btn-outline-primary btn-lg">
-                  Follow</a>
-              </div>
-            </div>
-            <!-- Row end -->
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Row end -->
-
-    <!-- Row start -->
-    <div class="row gx-3">
-      <div class="col-xxl-6 col-sm-6 col-12 order-xxl-6 order-xl-6 order-lg-6 order-md-6 order-sm-6">
-        <!-- О сотруднике -->
-        <div class="card mb-3">
-          <div class="card-header">
-            <h5 class="card-title">About</h5>
-          </div>
-          <div class="card-body">
-            <h6 class="d-flex align-items-center mb-3">
-              <i class="bi bi-house fs-2 me-2"></i> Lives in
-              <span> San Fransisco</span>
-            </h6>
-            <h6 class="d-flex align-items-center mb-3">
-              <i class="bi bi-building fs-2 me-2"></i> Works @
-              <span class="text-primary">Bootstrap Gallery</span>
-            </h6>
-            <h6 class="d-flex align-items-center mb-3">
-              <i class="bi bi-globe-americas fs-2 me-2"></i>
-              <span class="text-primary">www.bootstrap.gallery</span>
-            </h6>
-          </div>
-        </div>
-
-        <!-- Навыки -->
-        <div class="card mb-3">
-          <div class="card-header">
-            <h5 class="card-title">Skills</h5>
-          </div>
-          <div class="card-body">
-            <div class="d-inline-flex gap-2 flex-wrap">
-              <span class="badge bg-danger">HTML</span>
-              <span class="badge bg-info">Javascript</span>
-              <span class="badge bg-success">React</span>
-              <span class="badge bg-warning">Scss</span>
-              <span class="badge bg-primary">Angular</span>
-              <span class="badge bg-secondary">CSS</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-xxl-6 col-sm-6 col-12 order-xxl-6 order-xl-6 order-lg-6 order-md-6 order-sm-6">
-        <!-- Группы доступа -->
-        <div class="card mb-3">
-          <div class="card-header">
-            <h5 class="card-title">Запрашиваемые группы доступа</h5>
-          </div>
-          <!-- Необходимо добавить тут карточки групп доступа -->
-          <div class="card-body">
-            <ul class="list-group">
-              <li class="list-group-item">
-
-                  <i class="bi bi-people"></i> Bootstrap 5
-                  Admin Dashboard
-              </li>
-
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Row end -->
-
-  </div>
+{% block title %}Создание профиля{% endblock %}
+{% block header_buttons %}
+<div class="col-12 col-md-auto">
+<a href="" class="btn btn-outline-primary btn-lg">
+  Создать пароль
+</a>
+</div>
 {% endblock %}
