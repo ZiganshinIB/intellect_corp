@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
+from .forms import PasswordForm
 from worker.models import Profile
 
 
@@ -23,3 +24,20 @@ def create_profile_detail(request, pk):
         request,
         template_name='tasker/create_profile_detail.html',
         context=context)
+
+
+def add_password(request, pk):
+    profile = get_object_or_404(Profile, pk=pk)
+    form = PasswordForm(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            cd = request.POST
+            print(cd)
+
+    return render(
+        request,
+        template_name='tasker/create_password.html',
+        context={
+            'profile': profile,
+            'form': form
+        })

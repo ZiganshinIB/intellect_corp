@@ -4,7 +4,7 @@
 {% block title %}Создание профиля{% endblock %}
 {% block header_buttons %}
 <div class="col-12 col-md-auto">
-<a href="" class="btn btn-outline-primary btn-lg">
+<a href="{% url 'tasker:create_password' profile.user.id %}" class="btn btn-outline-primary btn-lg">
   Создать пароль
 </a>
 </div>
