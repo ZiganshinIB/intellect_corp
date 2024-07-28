@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'tasker.apps.TaskerConfig',
     #'debug_toolbar',
     'easy_thumbnails',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -102,6 +103,13 @@ STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ]
+}
 
 # Login settings
 LOGIN_REDIRECT_URL = 'account:dashboard'
