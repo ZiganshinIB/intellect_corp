@@ -55,6 +55,9 @@ def add_password(request, pk):
 
 
 class TaskAPIList(ListCreateAPIView):
+    """
+    Создание задания через API
+    """
     serializer_class = TaskSerializer
     permission_classes = (IsOwnerOrAssignedOrReadOnly,)
 
